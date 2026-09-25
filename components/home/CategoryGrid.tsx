@@ -4,7 +4,7 @@ import CategoryBubble from './CategoryBubble';
 const categories = [
   { name: 'Feminine Hygiene', slug: 'feminine-hygiene', image: '/categories/feminine-hygiene.jpg' },
   { name: 'Probiotics & Supplements', slug: 'probiotics-supplements', image: '/categories/probiotics-supplements.jpg' },
-  { name: 'Intimacy & Sexual Wellness', slug: 'intimacy-wellness', image: '/categories/intimacy-wellness.jpg' },
+  { name: 'Intimacy / Sexual Wellness', slug: 'intimacy-wellness', image: '/categories/intimacy-wellness.jpg' },
   { name: 'Sex Toys', slug: 'sex-toys', image: '/categories/sex-toys.jpg' },
   { name: 'Kits & Bundles', slug: 'kits-bundles', image: '/categories/kits-bundles.jpg' },
 ];

@@ -1,7 +1,7 @@
 // app/checkout/page.tsx
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { Lock } from 'lucide-react';
 import { useCart } from '@/lib/cart-context';
@@ -22,6 +22,7 @@ const NIGERIAN_STATES = [
 export default function CheckoutPage() {
   const router = useRouter();
   const { items, subtotal, clearCart } = useCart();
+  const orderPlacedRef = useRef(false);
 
   const [formData, setFormData] = useState<CheckoutFormData>({
     fullName: '',
@@ -38,7 +39,7 @@ export default function CheckoutPage() {
   const [submitError, setSubmitError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (items.length === 0) {
+    if (items.length === 0 && !orderPlacedRef.current) {
       router.replace('/cart');
     }
   }, [items.length, router]);
@@ -77,10 +78,10 @@ export default function CheckoutPage() {
     setIsSubmitting(true);
 
     try {
-        const orderData = {
-            ...formData,
-            items: items.map((i) => ({ productId: i.productId, variationId: i.variationId, quantity: i.quantity })),
-          };
+      const orderData = {
+        ...formData,
+        items: items.map((i) => ({ productId: i.productId, variationId: i.variationId, quantity: i.quantity })),
+      };
 
       const body = new FormData();
       body.append('receipt', receipt as File);
@@ -97,17 +98,16 @@ export default function CheckoutPage() {
         throw new Error(result.error || 'Something went wrong. Please try again.');
       }
 
+      orderPlacedRef.current = true;
       clearCart();
-      router.push(
-        `/order-success?orderNumber=${result.orderNumber}&amount=${subtotal}&name=${encodeURIComponent(formData.fullName)}`
-      );
+      router.push(`/order-success?orderId=${result.orderId}`);
     } catch (err) {
       setSubmitError(err instanceof Error ? err.message : 'Something went wrong.');
       setIsSubmitting(false);
     }
   };
 
-  if (items.length === 0) return null;
+  if (items.length === 0 && !orderPlacedRef.current) return null;
 
   return (
     <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6">

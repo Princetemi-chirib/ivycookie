@@ -3,6 +3,7 @@ import {
     fetchProducts,
     fetchProductBySlug,
     fetchProductVariations,
+    fetchCategoryBySlug,
     WCProduct,
     WCVariation,
   } from './woocommerce';
@@ -77,7 +78,11 @@ import {
       const wcProducts = await fetchProducts({ per_page: 100 });
       return Promise.all(wcProducts.map(mapProduct));
     }
-    const wcProducts = await fetchProducts({ category: categorySlug, per_page: 100 });
+  
+    const category = await fetchCategoryBySlug(categorySlug);
+    if (!category) return [];
+  
+    const wcProducts = await fetchProducts({ categoryId: category.id, per_page: 100 });
     return Promise.all(wcProducts.map(mapProduct));
   }
   
@@ -88,7 +93,10 @@ import {
   }
   
   export async function getRelatedProducts(product: Product, limit = 4): Promise<Product[]> {
-    const wcProducts = await fetchProducts({ category: product.category, per_page: limit + 1 });
+    const category = await fetchCategoryBySlug(product.category);
+    if (!category) return [];
+  
+    const wcProducts = await fetchProducts({ categoryId: category.id, per_page: limit + 1 });
     const mapped = await Promise.all(wcProducts.map(mapProduct));
     return mapped.filter((p) => p.id !== product.id).slice(0, limit);
   }

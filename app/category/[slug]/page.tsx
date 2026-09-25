@@ -38,7 +38,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
       ) : (
         <div className="mt-16 flex flex-col items-center gap-3 text-center">
           <span className="text-4xl">🧴</span>
-          <p className="text-gray-500">No products in this category yet — check back soon!</p>
+          <p className="text-gray-500">No products in this category yet  check back soon!</p>
         </div>
       )}
     </section>

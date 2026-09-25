@@ -3,6 +3,10 @@ const WC_URL = process.env.WOOCOMMERCE_URL;
 const CK = process.env.WOOCOMMERCE_CONSUMER_KEY;
 const CS = process.env.WOOCOMMERCE_CONSUMER_SECRET;
 
+export async function fetchCategoryBySlug(slug: string): Promise<WCCategory | null> {
+    const results = await wcFetch<WCCategory[]>(`products/categories?slug=${encodeURIComponent(slug)}`);
+    return results[0] ?? null;
+  }
 function authQuery() {
   return `consumer_key=${CK}&consumer_secret=${CS}`;
 }
@@ -52,12 +56,12 @@ async function wcFetch<T>(path: string): Promise<T> {
   return res.json();
 }
 
-export async function fetchProducts(params?: { category?: string; per_page?: number }): Promise<WCProduct[]> {
-  const query = new URLSearchParams();
-  if (params?.category) query.set('category', params.category);
-  query.set('per_page', String(params?.per_page ?? 20));
-  return wcFetch<WCProduct[]>(`products?${query.toString()}`);
-}
+export async function fetchProducts(params?: { categoryId?: number; per_page?: number }): Promise<WCProduct[]> {
+    const query = new URLSearchParams();
+    if (params?.categoryId) query.set('category', String(params.categoryId));
+    query.set('per_page', String(params?.per_page ?? 20));
+    return wcFetch<WCProduct[]>(`products?${query.toString()}`);
+  }
 
 export async function fetchProductBySlug(slug: string): Promise<WCProduct | null> {
   const results = await wcFetch<WCProduct[]>(`products?slug=${encodeURIComponent(slug)}`);
