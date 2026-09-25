@@ -40,8 +40,7 @@ export default function Hero() {
           </h1>
 
           <p className="mx-auto mt-6 max-w-md text-lg text-gray-600 md:mx-0">
-            Feminine care, intimacy essentials & wellness picks — curated
-            with you in mind. Because self-care should feel good, too.
+          Welcome to IVYCOOKIECARE.ng Femcare • Intimacy • Education Everything your cookie needs for her clean girl era.
           </p>
 
           <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row md:justify-start">

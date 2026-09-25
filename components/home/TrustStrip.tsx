@@ -18,9 +18,9 @@ const trustPoints = [
     description: 'Nationwide shipping, tracked every step of the way.',
   },
   {
-    icon: RotateCcw,
-    title: 'Easy Returns',
-    description: 'Not the right fit? We\'ll sort you out, no hassle.',
+    icon: PackageCheck,
+    title: 'Quality Guaranteed',
+    description: 'Every order is carefully checked before it is shipped.',
   },
 ];
 

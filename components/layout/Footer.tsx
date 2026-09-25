@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 py-12 sm:px-6 md:grid-cols-4">
         <div className="col-span-2 md:col-span-1">
           <span className="font-heading text-xl font-semibold text-primary-500">
-            Ivy<span className="text-primary-600">Cookiecare</span>
+            Ivy<span className="text-primary-600">Cookiecare.ng</span>
           </span>
           <p className="mt-2 text-sm text-gray-500">...helping you marinate your cookie</p>
         </div>
