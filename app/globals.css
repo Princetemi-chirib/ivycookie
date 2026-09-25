@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  /* Fonts */
+  --font-heading: var(--font-fredoka), sans-serif;
+  --font-body: var(--font-inter), sans-serif;
+
+  /* Pink palette, inspired by the Ivy Cookiecare logo */
+  --color-primary-50:  #fdf2f8;
+  --color-primary-100: #fce7f3;
+  --color-primary-200: #fbcfe8;
+  --color-primary-300: #f9a8d4;
+  --color-primary-400: #f472b6;
+  --color-primary-500: #ec4899; /* main brand pink */
+  --color-primary-600: #db2777; /* buttons/CTAs */
+  --color-primary-700: #be185d;
+  --color-primary-800: #9d174d;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+@keyframes bubble-pop {
+  0% { transform: scale(1); opacity: 1; }
+  55% { transform: scale(1.18); opacity: 1; }
+  100% { transform: scale(0.25); opacity: 0; }
+}
+
+@keyframes fragment-burst {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+}
+
+.animate-bubble-pop {
+  animation: bubble-pop 480ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-fragment {
+  animation: fragment-burst 480ms ease-out forwards;
+}
+@keyframes bubble-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-bubble-float {
+  animation: bubble-float 3.5s ease-in-out infinite;
+}
+@keyframes drift-slow {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(20px, -25px); }
+}
+
+@keyframes drift-medium {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-15px, 20px); }
+}
+
+@keyframes drift-fast {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(12px, -15px); }
+}
+
+.animate-drift-slow {
+  animation: drift-slow 8s ease-in-out infinite;
+}
+
+.animate-drift-medium {
+  animation: drift-medium 6s ease-in-out infinite;
+}
+
+.animate-drift-fast {
+  animation: drift-fast 5s ease-in-out infinite;
+}
