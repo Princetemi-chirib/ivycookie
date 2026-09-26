@@ -1,7 +1,7 @@
 // app/cart/page.tsx
 'use client';
 
-import Link from 'next/link';
+import NavigationLink from '@/components/layout/NavigationLink';
 import { ShoppingBag } from 'lucide-react';
 import CartItem from '@/components/cart/CartItem';
 import CartSummary from '@/components/cart/CartSummary';
@@ -20,12 +20,12 @@ export default function CartPage() {
         <div className="mt-16 flex flex-col items-center gap-4 text-center">
           <ShoppingBag size={40} className="text-primary-200" />
           <p className="text-gray-500">Your cart is empty.</p>
-          <Link
+          <NavigationLink
             href="/category/all"
             className="rounded-full bg-primary-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-primary-700"
           >
             Start Shopping
-          </Link>
+          </NavigationLink>
         </div>
       ) : (
         <div className="mt-8 grid gap-8 lg:grid-cols-3">

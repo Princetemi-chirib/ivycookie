@@ -1,7 +1,7 @@
 // components/cart/CartDropdown.tsx
 'use client';
 
-import Link from 'next/link';
+import NavigationLink from '@/components/layout/NavigationLink';
 import Image from 'next/image';
 import { X, ShoppingBag } from 'lucide-react';
 import { useCart } from '@/lib/cart-context';
@@ -61,20 +61,20 @@ export default function CartDropdown({ onClose }: { onClose: () => void }) {
               <span>Subtotal</span>
               <span className="text-primary-600">{formatNaira(subtotal)}</span>
             </div>
-            <Link
+            <NavigationLink
               href="/cart"
               onClick={onClose}
               className="mt-3 block w-full rounded-full border border-primary-200 py-2.5 text-center text-sm font-semibold text-primary-600 hover:bg-primary-50"
             >
               View Cart
-            </Link>
-            <Link
+            </NavigationLink>
+            <NavigationLink
               href="/checkout"
               onClick={onClose}
               className="mt-2 block w-full rounded-full bg-primary-600 py-2.5 text-center text-sm font-semibold text-white hover:bg-primary-700"
             >
               Checkout
-            </Link>
+            </NavigationLink>
           </div>
         </>
       )}

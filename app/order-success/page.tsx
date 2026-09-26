@@ -2,7 +2,7 @@
 'use client';
 
 import { Suspense, useEffect, useState } from 'react';
-import Link from 'next/link';
+import NavigationLink from '@/components/layout/NavigationLink';
 import { useSearchParams } from 'next/navigation';
 import { CheckCircle2, Download, Printer } from 'lucide-react';
 import OrderReceipt from '@/app/checkout/OrderReceipt';
@@ -58,9 +58,9 @@ function OrderSuccessContent() {
     return (
       <section className="mx-auto max-w-2xl px-4 py-20 text-center sm:px-6">
         <p className="text-gray-500">{error || 'Something went wrong.'}</p>
-        <Link href="/category/all" className="mt-6 inline-block rounded-full bg-primary-600 px-8 py-3 text-sm font-semibold text-white hover:bg-primary-700">
+        <NavigationLink href="/category/all" className="mt-6 inline-block rounded-full bg-primary-600 px-8 py-3 text-sm font-semibold text-white hover:bg-primary-700">
           Continue Shopping
-        </Link>
+        </NavigationLink>
       </section>
     );
   }
@@ -89,12 +89,12 @@ function OrderSuccessContent() {
           <Download size={16} />
           Download / Print Receipt
         </button>
-        <Link
+        <NavigationLink
           href="/category/all"
           className="rounded-full bg-primary-600 px-8 py-2.5 text-sm font-semibold text-white hover:bg-primary-700"
         >
           Continue Shopping
-        </Link>
+        </NavigationLink>
       </div>
     </section>
   );

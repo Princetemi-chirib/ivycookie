@@ -1,7 +1,7 @@
 // components/cart/CartSummary.tsx
 'use client';
 
-import Link from 'next/link';
+import NavigationLink from '@/components/layout/NavigationLink';
 import { useCart } from '@/lib/cart-context';
 import { formatNaira } from '@/lib/products';
 
@@ -28,12 +28,12 @@ export default function CartSummary() {
         <span className="text-primary-600">{formatNaira(subtotal)}</span>
       </div>
 
-      <Link
+      <NavigationLink
         href="/checkout"
         className="mt-6 block w-full rounded-full bg-primary-600 py-3.5 text-center text-sm font-semibold text-white shadow-md shadow-primary-200 hover:bg-primary-700"
       >
         Proceed to Checkout
-      </Link>
+      </NavigationLink>
     </div>
   );
 }

@@ -2,7 +2,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
+import NavigationLink from '@/components/layout/NavigationLink';
 import Image from 'next/image';
 import { Search, ShoppingBag, Menu } from 'lucide-react';
 import { useCart } from '@/lib/cart-context';
@@ -39,7 +39,7 @@ export default function Header({
           <Menu size={24} />
         </button>
 
-        <Link href="/" className="flex shrink-0 items-center">
+        <NavigationLink href="/" className="flex shrink-0 items-center">
           <Image
             src="/ivylogo.png"
             alt="Ivy Cookiecare"
@@ -48,7 +48,7 @@ export default function Header({
             priority
             className="h-14 w-auto sm:h-16"
           />
-        </Link>
+        </NavigationLink>
 
         <div className="hidden flex-1 justify-center md:flex">
           <div className="relative w-full max-w-md">
@@ -65,8 +65,8 @@ export default function Header({
         </div>
 
         <nav className="hidden items-center gap-6 text-sm font-medium text-gray-700 lg:flex">
-          <Link href="/category/all" className="hover:text-primary-600">Shop</Link>
-          <Link href="/category/new" className="hover:text-primary-600">New</Link>
+          <NavigationLink href="/category/all" className="hover:text-primary-600">Shop</NavigationLink>
+          <NavigationLink href="/category/new" className="hover:text-primary-600">New</NavigationLink>
         </nav>
 
         {/* Cart with dropdown */}

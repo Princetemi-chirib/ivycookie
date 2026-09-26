@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import NavigationLink from '@/components/layout/NavigationLink';
 import { X } from 'lucide-react';
 
 export default function MobileNav({
@@ -33,11 +33,11 @@ export default function MobileNav({
           </button>
         </div>
         <nav className="flex flex-col gap-1 px-4 py-4">
-          <Link href="/" onClick={onClose} className="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-600">Home</Link>
-          <Link href="/category/all" onClick={onClose} className="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-600">Shop</Link>
-          <Link href="/category/new" onClick={onClose} className="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-600">New Arrivals</Link>
-          <Link href="/cart" onClick={onClose} className="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-600">Cart</Link>
-          <Link href="/contact" onClick={onClose} className="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-600">Contact</Link>
+          <NavigationLink href="/" onClick={onClose} className="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-600">Home</NavigationLink>
+          <NavigationLink href="/category/all" onClick={onClose} className="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-600">Shop</NavigationLink>
+          <NavigationLink href="/category/new" onClick={onClose} className="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-600">New Arrivals</NavigationLink>
+          <NavigationLink href="/cart" onClick={onClose} className="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-600">Cart</NavigationLink>
+          <NavigationLink href="/contact" onClick={onClose} className="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-600">Contact</NavigationLink>
         </nav>
       </div>
     </>

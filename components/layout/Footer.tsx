@@ -1,5 +1,5 @@
 // components/layout/Footer.tsx
-import Link from 'next/link';
+import NavigationLink from '@/components/layout/NavigationLink';
 import { Mail, Globe, MessageCircle } from 'lucide-react';
 
 export default function Footer() {
@@ -16,17 +16,17 @@ export default function Footer() {
         <div>
           <h4 className="font-heading text-sm font-semibold text-gray-800">Shop</h4>
           <ul className="mt-3 space-y-2 text-sm text-gray-600">
-            <li><Link href="/category/all" className="hover:text-primary-600">All Products</Link></li>
-            <li><Link href="/category/new" className="hover:text-primary-600">New Arrivals</Link></li>
+            <li><NavigationLink href="/category/all" className="hover:text-primary-600">All Products</NavigationLink></li>
+            <li><NavigationLink href="/category/new" className="hover:text-primary-600">New Arrivals</NavigationLink></li>
           </ul>
         </div>
 
         <div>
           <h4 className="font-heading text-sm font-semibold text-gray-800">Support</h4>
           <ul className="mt-3 space-y-2 text-sm text-gray-600">
-            <li><Link href="/faq" className="hover:text-primary-600">FAQs</Link></li>
-            <li><Link href="/contact" className="hover:text-primary-600">Contact Us</Link></li>
-            <li><Link href="/shipping" className="hover:text-primary-600">Shipping & Returns</Link></li>
+            <li><NavigationLink href="/faq" className="hover:text-primary-600">FAQs</NavigationLink></li>
+            <li><NavigationLink href="/contact" className="hover:text-primary-600">Contact Us</NavigationLink></li>
+            <li><NavigationLink href="/shipping" className="hover:text-primary-600">Shipping & Returns</NavigationLink></li>
           </ul>
         </div>
 

@@ -1,7 +1,7 @@
 // components/products/ProductCard.tsx
 'use client';
 
-import Link from 'next/link';
+import NavigationLink from '@/components/layout/NavigationLink';
 import Image from 'next/image';
 import { ShoppingBag } from 'lucide-react';
 import { Product } from '@/types/product';
@@ -18,7 +18,7 @@ export default function ProductCard({ product }: { product: Product }) {
   const { addItem } = useCart();
 
   const handleQuickAdd = (e: React.MouseEvent) => {
-    e.preventDefault(); // stop the parent <Link> from navigating
+    e.preventDefault(); // stop the parent <NavigationLink> from navigating
     e.stopPropagation();
     addItem({
       productId: product.id,
@@ -32,7 +32,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-primary-100 bg-white transition hover:shadow-lg hover:shadow-primary-100">
-      <Link href={`/product/${product.slug}`} className="relative block aspect-square overflow-hidden bg-primary-50">
+      <NavigationLink href={`/product/${product.slug}`} className="relative block aspect-square overflow-hidden bg-primary-50">
         <Image
           src={product.image}
           alt={product.name}
@@ -45,14 +45,14 @@ export default function ProductCard({ product }: { product: Product }) {
             {product.badge}
           </span>
         )}
-      </Link>
+      </NavigationLink>
 
       <div className="flex flex-1 flex-col gap-2 p-4">
-        <Link href={`/product/${product.slug}`}>
+        <NavigationLink href={`/product/${product.slug}`}>
           <h3 className="line-clamp-2 text-sm font-medium text-gray-800 group-hover:text-primary-600">
             {product.name}
           </h3>
-        </Link>
+        </NavigationLink>
 
         <div className="mt-auto flex items-center justify-between pt-2">
           <div className="flex items-baseline gap-2">

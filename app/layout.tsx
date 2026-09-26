@@ -3,6 +3,8 @@ import './globals.css';
 import { Fredoka, Inter } from 'next/font/google';
 import AppShell from '@/components/layout/AppShell';
 import { CartProvider } from '@/lib/cart-context';
+import { NavigationProvider } from '@/lib/navigation-context';
+import TopProgressBar from '@/components/layout/TopProgressBar';
 
 const fredoka = Fredoka({
   subsets: ['latin'],
@@ -28,9 +30,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${fredoka.variable} ${inter.variable}`}>
       <body className="flex min-h-screen flex-col bg-white text-gray-900 antialiased">
-        <CartProvider>
-          <AppShell>{children}</AppShell>
-        </CartProvider>
+        <NavigationProvider>
+          <TopProgressBar />
+          <CartProvider>
+            <AppShell>{children}</AppShell>
+          </CartProvider>
+        </NavigationProvider>
       </body>
     </html>
   );

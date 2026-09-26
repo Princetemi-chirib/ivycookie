@@ -1,5 +1,5 @@
 // components/home/Hero.tsx
-import Link from 'next/link';
+import NavigationLink from '@/components/layout/NavigationLink';
 import Image from 'next/image';
 import { ShoppingBag, Sparkles } from 'lucide-react';
 
@@ -41,22 +41,23 @@ export default function Hero() {
 
           <p className="mx-auto mt-6 max-w-md text-lg text-gray-600 md:mx-0">
           Welcome to IVYCOOKIECARE.ng Femcare • Intimacy • Education Everything your cookie needs for her clean girl era.
+
           </p>
 
           <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row md:justify-start">
-            <Link
+            <NavigationLink
               href="/category/all"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-primary-600 px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-primary-300/50 transition hover:-translate-y-0.5 hover:bg-primary-700 hover:shadow-xl"
             >
               <ShoppingBag size={16} />
               Shop Now
-            </Link>
-            <Link
+            </NavigationLink>
+            <NavigationLink
               href="/category/intimacy-wellness"
               className="inline-flex items-center justify-center rounded-full border border-primary-200 bg-white px-8 py-3.5 text-sm font-semibold text-primary-600 transition hover:-translate-y-0.5 hover:bg-primary-50"
             >
               Explore Wellness
-            </Link>
+            </NavigationLink>
           </div>
 
           {/* Trust badges row */}

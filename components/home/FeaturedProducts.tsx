@@ -1,5 +1,5 @@
 // components/home/FeaturedProducts.tsx
-import Link from 'next/link';
+import NavigationLink from '@/components/layout/NavigationLink';
 import { ArrowRight } from 'lucide-react';
 import ProductCard from '@/components/products/ProductCard';
 import { getFeaturedProducts } from '@/lib/products';
@@ -18,9 +18,9 @@ export default async function FeaturedProducts() {
             Bestsellers
           </h2>
         </div>
-        <Link href="/category/all" className="hidden items-center gap-1 text-sm font-semibold text-primary-600 hover:text-primary-700 sm:flex">
+        <NavigationLink href="/category/all" className="hidden items-center gap-1 text-sm font-semibold text-primary-600 hover:text-primary-700 sm:flex">
           View all <ArrowRight size={16} />
-        </Link>
+        </NavigationLink>
       </div>
 
       {featuredProducts.length > 0 ? (
@@ -36,9 +36,9 @@ export default async function FeaturedProducts() {
       )}
 
       <div className="mt-8 flex justify-center sm:hidden">
-        <Link href="/category/all" className="flex items-center gap-1 rounded-full border border-primary-200 px-6 py-2.5 text-sm font-semibold text-primary-600">
+        <NavigationLink href="/category/all" className="flex items-center gap-1 rounded-full border border-primary-200 px-6 py-2.5 text-sm font-semibold text-primary-600">
           View all products <ArrowRight size={16} />
-        </Link>
+        </NavigationLink>
       </div>
     </section>
   );
