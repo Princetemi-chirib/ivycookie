@@ -2,11 +2,12 @@
 import CategoryBubble from './CategoryBubble';
 
 const categories = [
-  { name: 'Feminine Hygiene', slug: 'feminine-hygiene', image: '/categories/feminine-hygiene.jpg' },
+  { name: 'Feminine Hygiene', slug: 'feminine-hygiene', image: '"C:\Users\adeni\Downloads\ivycookie\ivycookie\public\fh.jpg"' },
   { name: 'Probiotics & Supplements', slug: 'probiotics-supplements', image: '/categories/probiotics-supplements.jpg' },
   { name: 'Intimacy / Sexual Wellness', slug: 'intimacy-wellness', image: '/categories/intimacy-wellness.jpg' },
   { name: 'Sex Toys', slug: 'sex-toys', image: '/categories/sex-toys.jpg' },
   { name: 'Kits & Bundles', slug: 'kits-bundles', image: '/categories/kits-bundles.jpg' },
+  { name: 'card games', slug: 'card-games', image: '/categories/kits-bundles.jpg' },
 ];
 
 export default function CategoryGrid() {
