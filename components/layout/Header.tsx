@@ -2,11 +2,12 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import NavigationLink from '@/components/layout/NavigationLink';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { Search, ShoppingBag, Menu } from 'lucide-react';
 import { useCart } from '@/lib/cart-context';
 import CartDropdown from '@/components/cart/CartDropdown';
+import NavigationLink from '@/components/layout/NavigationLink';
 
 export default function Header({
   onOpenMobileNav = () => {},
@@ -14,10 +15,12 @@ export default function Header({
   onOpenMobileNav?: () => void;
 }) {
   const { totalCount } = useCart();
+  const router = useRouter();
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [mobileSearchQuery, setMobileSearchQuery] = useState('');
   const cartRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdown on outside click
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
       if (cartRef.current && !cartRef.current.contains(e.target as Node)) {
@@ -27,6 +30,14 @@ export default function Header({
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+  const handleSearchSubmit = (query: string) => (e: React.FormEvent) => {
+    e.preventDefault();
+    const trimmed = query.trim();
+    if (trimmed) {
+      router.push(`/search?q=${encodeURIComponent(trimmed)}`);
+    }
+  };
 
   return (
     <header className="sticky top-0 z-40 border-b border-primary-100 bg-white/90 backdrop-blur">
@@ -50,7 +61,8 @@ export default function Header({
           />
         </NavigationLink>
 
-        <div className="hidden flex-1 justify-center md:flex">
+        {/* Search bar (desktop) */}
+        <form onSubmit={handleSearchSubmit(searchQuery)} className="hidden flex-1 justify-center md:flex">
           <div className="relative w-full max-w-md">
             <Search
               size={18}
@@ -58,18 +70,19 @@ export default function Header({
             />
             <input
               type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search products..."
               className="w-full rounded-full border border-primary-200 bg-primary-50/60 py-2.5 pl-11 pr-4 text-sm text-gray-800 placeholder:text-primary-400 transition focus:border-primary-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-200"
             />
           </div>
-        </div>
+        </form>
 
         <nav className="hidden items-center gap-6 text-sm font-medium text-gray-700 lg:flex">
           <NavigationLink href="/category/all" className="hover:text-primary-600">Shop</NavigationLink>
           <NavigationLink href="/category/new" className="hover:text-primary-600">New</NavigationLink>
         </nav>
 
-        {/* Cart with dropdown */}
         <div ref={cartRef} className="relative ml-auto shrink-0 md:ml-0">
           <button
             onClick={() => setIsCartOpen((prev) => !prev)}
@@ -88,7 +101,8 @@ export default function Header({
         </div>
       </div>
 
-      <div className="border-t border-primary-50 px-4 py-2 md:hidden">
+      {/* Mobile search row */}
+      <form onSubmit={handleSearchSubmit(mobileSearchQuery)} className="border-t border-primary-50 px-4 py-2 md:hidden">
         <div className="relative">
           <Search
             size={16}
@@ -96,11 +110,13 @@ export default function Header({
           />
           <input
             type="text"
+            value={mobileSearchQuery}
+            onChange={(e) => setMobileSearchQuery(e.target.value)}
             placeholder="Search products..."
             className="w-full rounded-full border border-primary-200 bg-primary-50/60 py-2 pl-9 pr-3 text-sm placeholder:text-primary-400 focus:border-primary-400 focus:outline-none"
           />
         </div>
-      </div>
+      </form>
     </header>
   );
 }

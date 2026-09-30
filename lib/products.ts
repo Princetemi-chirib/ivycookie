@@ -104,3 +104,13 @@ import {
   export function formatNaira(amount: number): string {
     return `₦${amount.toLocaleString('en-NG')}`;
   }
+  // lib/products.ts
+// ...add this import at top alongside the others:
+import { searchWCProducts } from './woocommerce';
+
+// ...add this function anywhere among the other exports:
+export async function searchProducts(query: string): Promise<Product[]> {
+  if (!query.trim()) return [];
+  const wcProducts = await searchWCProducts(query);
+  return Promise.all(wcProducts.map(mapProduct));
+}

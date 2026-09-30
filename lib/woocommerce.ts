@@ -75,3 +75,12 @@ export async function fetchProductVariations(productId: number): Promise<WCVaria
 export async function fetchCategories(): Promise<WCCategory[]> {
   return wcFetch<WCCategory[]>(`products/categories?per_page=50`);
 }
+// lib/woocommerce.ts
+// ...keep everything else unchanged, add this:
+
+export async function searchWCProducts(query: string): Promise<WCProduct[]> {
+  const params = new URLSearchParams();
+  params.set('search', query);
+  params.set('per_page', '24');
+  return wcFetch<WCProduct[]>(`products?${params.toString()}`);
+}
