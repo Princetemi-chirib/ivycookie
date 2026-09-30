@@ -7,7 +7,7 @@ const categoryLabels: Record<string, string> = {
   all: 'All Products',
   'feminine-hygiene': 'Feminine Hygiene',
   'probiotics-supplements': 'Probiotics & Supplements',
-  'intimacy-wellness': 'Intimacy & Sexual Wellness',
+  'intimacy-sexual-wellness': 'Intimacy & Sexual Wellness',
   'sex-toys': 'Sex Toys',
   'kits-bundles': 'Kits & Bundles',
   'card-games': 'card games',
