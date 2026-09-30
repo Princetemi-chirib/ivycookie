@@ -1,7 +1,6 @@
-// lib/navigation-context.tsx
 'use client';
 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode, Suspense } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 
 type NavigationContextType = {
@@ -11,20 +10,31 @@ type NavigationContextType = {
 
 const NavigationContext = createContext<NavigationContextType | undefined>(undefined);
 
-export function NavigationProvider({ children }: { children: ReactNode }) {
+// Isolated component that actually reads the search params.
+// Wrapped in Suspense below so it doesn't force the whole tree
+// (including /_not-found) to bail out of static rendering.
+function RouteChangeListener({ onRouteChange }: { onRouteChange: () => void }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
+
+  useEffect(() => {
+    onRouteChange();
+  }, [pathname, searchParams, onRouteChange]);
+
+  return null;
+}
+
+export function NavigationProvider({ children }: { children: ReactNode }) {
   const [isNavigating, setIsNavigating] = useState(false);
 
-  // Whenever the actual route finishes changing, clear the loading state
-  useEffect(() => {
-    setIsNavigating(false);
-  }, [pathname, searchParams]);
-
   const startNavigating = () => setIsNavigating(true);
+  const clearNavigating = () => setIsNavigating(false);
 
   return (
     <NavigationContext.Provider value={{ isNavigating, startNavigating }}>
+      <Suspense fallback={null}>
+        <RouteChangeListener onRouteChange={clearNavigating} />
+      </Suspense>
       {children}
     </NavigationContext.Provider>
   );
