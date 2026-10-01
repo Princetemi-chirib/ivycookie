@@ -7,7 +7,7 @@ const categories = [
   { name: 'Intimacy / Sexual Wellness', slug: 'intimacy-sexual-wellness', image: '/categories/intimacy-sexual-wellness.jpg' },
   { name: 'Sex Toys', slug: 'sex-toys', image: '/categories/sex-toys.jpg' },
   { name: 'Kits & Bundles', slug: 'kits-bundles', image: '/categories/kits-bundles.jpg' },
-  { name: 'card games', slug: '', image: '/categories/kits-bundles.jpg' },
+  { name: 'card games', slug: 'card-games', image: '/categories/kits-bundles.jpg' },
 ];
 
 export default function CategoryGrid() {
