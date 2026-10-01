@@ -21,14 +21,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div>
-          <h4 className="font-heading text-sm font-semibold text-gray-800">Support</h4>
-          <ul className="mt-3 space-y-2 text-sm text-gray-600">
-            <li><NavigationLink href="/faq" className="hover:text-primary-600">FAQs</NavigationLink></li>
-            <li><NavigationLink href="/contact" className="hover:text-primary-600">Contact Us</NavigationLink></li>
-            <li><NavigationLink href="/shipping" className="hover:text-primary-600">Shipping & Returns</NavigationLink></li>
-          </ul>
-        </div>
+      
 
         <div>
           <h4 className="font-heading text-sm font-semibold text-gray-800">Follow Us</h4>
